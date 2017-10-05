@@ -10,4 +10,4 @@
    ```
 
 `train_df`と`test_df`はpandas.DataFrameで返ってくる
-`dr.get_dummied_data()`の代わりに`dr.get_data()`をすることでダミー変数化されていないデータを取得できる(使い方は全く同じ)
+`dr.get_dummied_data()`の代わりに`dr.get_data()`をすることでダミー変数化されていないデータ、`dr.get_raw_data`でcsvを読み込んだだけのデータ、を取得できる(使い方は全く同じ)
