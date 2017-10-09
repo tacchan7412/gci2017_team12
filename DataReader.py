@@ -3,14 +3,17 @@ import numpy as np
 
 class DataReader(object):
   def __init__(self):
-    self.train_csv = 'train.csv'
-    self.test_csv = 'test.csv'
+    self.train_csv = 'data/train.csv'
+    self.test_csv = 'data/test.csv'
 
-  def concat_csv(self):
-    # csvを読み込む
+  def read_csv(self):
+  # csvを読み込む
     train_df = pd.read_csv(self.train_csv)
     test_df = pd.read_csv(self.test_csv)
-  
+
+    return train_df, test_df
+
+  def concat_csv(self, train_df, test_df):
     # y column だけ切り取る
     train_df_y = train_df[["y"]]
     train_df = train_df.drop(["y"], axis=1)
@@ -56,15 +59,20 @@ class DataReader(object):
     return df
 
   def get_data(self):
-    df, train_df_y = self.concat_csv()
+    df1, df2 = self.read_csv()
+    df, train_df_y = self.concat_csv(df1, df2)
     df = self.transform_datetime(df)
     train_df, test_df = self.reconst_data(df, train_df_y)
     print(train_df.columns)
     
     return train_df, test_df
 
+  def get_raw_data(self):
+    return self.read_csv()
+    
   def get_dummied_data(self):
-    df, train_df_y = self.concat_csv()
+    df1, df2 = self.read_csv()
+    df, train_df_y = self.concat_csv(df1, df2)
     df = self.transform_datetime(df)
     df = self.get_dummies_of_datetime(df)
     train_df, test_df = self.reconst_data(df, train_df_y)

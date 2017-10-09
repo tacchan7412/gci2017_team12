@@ -1,2 +1,10 @@
+<<<<<<< HEAD
+=======
+train.csv
+test.csv
+submission.csv
+sample_submit.csv
+
+>>>>>>> 321077aa5dbac2714fe5802c45c58d330de83b2f
 __pycache__/
 .ipynb_checkpoints/
