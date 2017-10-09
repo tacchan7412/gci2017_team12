@@ -3,8 +3,8 @@ import numpy as np
 
 class DataReader(object):
   def __init__(self):
-    self.train_csv = 'train.csv'
-    self.test_csv = 'test.csv'
+    self.train_csv = 'data/train.csv'
+    self.test_csv = 'data/test.csv'
 
   def read_csv(self):
   # csvを読み込む
