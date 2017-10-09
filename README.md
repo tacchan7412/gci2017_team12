@@ -15,3 +15,9 @@
 
 `train_df`と`test_df`はpandas.DataFrameで返ってくる
 `dr.get_dummied_data()`の代わりに`dr.get_data()`をすることでダミー変数化されていないデータ、`dr.get_raw_data()`でcsvを読み込んだだけのデータ、を取得できる(使い方は全く同じ)
+
+## 外部データの共有方法
+- `data`フォルダにcsvファイルを追加する
+- PRの段階でどのようなデータかを説明する
+  - その後READMEに古賀が説明をコピペして誰でもすぐ見れるようにする
+- データは、`train.csv`と同じ形式の年月日のcolumnと一つ以上の外部データのcolumnsが含まれていることを前提とする
