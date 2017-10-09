@@ -1,5 +1,10 @@
 # gci2017_team12
 
+## ipython notebookの共有方法
+- `notebook` フォルダに各自`.ipynb`ファイルを追加する
+- その際ファイル名の最後に`_名字`を追加する
+  - ex: `sample_koga.ipynb`
+
 ## Dataの取得方法
 - 以下を実行する
    ```
