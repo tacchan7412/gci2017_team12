@@ -3,8 +3,8 @@ import numpy as np
 
 class DataReader(object):
   def __init__(self):
-    self.train_csv = 'data/train.csv'
-    self.test_csv = 'data/test.csv'
+    self.train_csv = '../data/train.csv'
+    self.test_csv = '../data/test.csv'
 
   def read_csv(self):
   # csvを読み込む
@@ -63,7 +63,6 @@ class DataReader(object):
     df, train_df_y = self.concat_csv(df1, df2)
     df = self.transform_datetime(df)
     train_df, test_df = self.reconst_data(df, train_df_y)
-    print(train_df.columns)
     
     return train_df, test_df
 
@@ -76,7 +75,6 @@ class DataReader(object):
     df = self.transform_datetime(df)
     df = self.get_dummies_of_datetime(df)
     train_df, test_df = self.reconst_data(df, train_df_y)
-    print(train_df.columns)
     
     return train_df, test_df
 
