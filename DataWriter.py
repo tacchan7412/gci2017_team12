@@ -13,6 +13,6 @@ class DataWriter(object):
     _, test_df = dr.get_raw_data()
     submission_df = pd.concat([df.y, test_df], axis=1)
     submission_df['y'] = submission_df['y'] * (1 - submission_df['close']) 
-    last_df = pd.concat([submission_df['datetime'] submission_df['y']], axis=1)
+    last_df = pd.concat([submission_df['datetime'], submission_df['y']], axis=1)
     last_df.to_csv(self.submission_csv, index=False, header=False)
     print(self.submission_csv + 'がdataフォルダに追加されました')
