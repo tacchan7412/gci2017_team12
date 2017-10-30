@@ -57,6 +57,21 @@ class DataReader(object):
     df = df.drop(['Month', 'DayofMonth', 'DayofWeek'], axis=1)
     
     return df
+    
+  def get_dummies_of_datetime_with_year(self, df):
+    # ダミー変数化
+    month_df = pd.get_dummies(df['Month'], prefix='M', prefix_sep='_')
+    dayofmonth_df = pd.get_dummies(df['DayofMonth'], prefix='DM', prefix_sep='_')
+    dayofweek_df = pd.get_dummies(df['DayofWeek'], prefix='DW', prefix_sep='_')
+    year_df = pd.get_dummies(df['year'], prefix='Y', prefix_sep='_')
+
+    df = pd.concat([df,year_df,month_df,dayofmonth_df, dayofweek_df], axis=1)
+
+    df = df.drop(['Month', 'DayofMonth', 'DayofWeek', 'year'], axis=1)
+    
+    return df
+
+
 
   def get_data(self):
     df1, df2 = self.read_csv()
@@ -77,4 +92,14 @@ class DataReader(object):
     train_df, test_df = self.reconst_data(df, train_df_y)
     
     return train_df, test_df
+
+  def get_dummied_data_with_year(self):
+    df1, df2 = self.read_csv()
+    df, train_df_y = self.concat_csv(df1, df2)
+    df = self.transform_datetime(df)
+    df = self.get_dummies_of_datetime_with_year(df)
+    train_df, test_df = self.reconst_data(df, train_df_y)
+    
+    return train_df, test_df
+
 
